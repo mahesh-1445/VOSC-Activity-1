@@ -3,26 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic-Tac-Toe</title>
+    <title>Tic-Tac-Toe | Play vs Human &amp; vs Computer</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <main class="game-container">
-        <h1 class="game-title">Tic-Tac-Toe</h1>
-        <div id="status" class="game-status" aria-live="polite">Player X's turn</div>
-        <div class="board" role="grid" aria-label="Tic-Tac-Toe Board">
-            <button class="cell" id="cell-0" role="gridcell" aria-label="Cell 1"></button>
-            <button class="cell" id="cell-1" role="gridcell" aria-label="Cell 2"></button>
-            <button class="cell" id="cell-2" role="gridcell" aria-label="Cell 3"></button>
-            <button class="cell" id="cell-3" role="gridcell" aria-label="Cell 4"></button>
-            <button class="cell" id="cell-4" role="gridcell" aria-label="Cell 5"></button>
-            <button class="cell" id="cell-5" role="gridcell" aria-label="Cell 6"></button>
-            <button class="cell" id="cell-6" role="gridcell" aria-label="Cell 7"></button>
-            <button class="cell" id="cell-7" role="gridcell" aria-label="Cell 8"></button>
-            <button class="cell" id="cell-8" role="gridcell" aria-label="Cell 9"></button>
+        <header class="game-header">
+            <h1 class="game-title">Tic-Tac-Toe</h1>
+            <p class="game-subtitle">Classic game with Human &amp; AI modes</p>
+        </header>
+
+        <!-- Mode Selection Tabs -->
+        <div class="mode-selector" role="tablist" aria-label="Game Mode Selection">
+            <button class="mode-btn active" id="mode-human" role="tab" aria-selected="true" aria-controls="game-board">
+                <span class="mode-icon">👥</span> vs Human
+            </button>
+            <button class="mode-btn" id="mode-computer" role="tab" aria-selected="false" aria-controls="game-board">
+                <span class="mode-icon">🤖</span> vs Computer
+            </button>
         </div>
-        <button id="reset" class="reset-button">Restart Game</button>
+
+        <!-- AI Difficulty Options (shown in vs Computer mode) -->
+        <div class="difficulty-panel hidden" id="difficulty-panel" aria-label="AI Difficulty">
+            <span class="difficulty-title">AI Level:</span>
+            <div class="difficulty-options" role="radiogroup" aria-label="AI Level">
+                <button class="diff-btn" data-difficulty="easy" role="radio" aria-checked="false" id="diff-easy">Easy</button>
+                <button class="diff-btn" data-difficulty="medium" role="radio" aria-checked="false" id="diff-medium">Medium</button>
+                <button class="diff-btn active" data-difficulty="hard" role="radio" aria-checked="true" id="diff-hard">Unbeatable</button>
+            </div>
+        </div>
+
+        <!-- Scoreboard -->
+        <div class="scoreboard" aria-label="Game Scores">
+            <div class="score-card score-x">
+                <span class="score-player-badge">X</span>
+                <span class="score-label" id="label-x">Player X</span>
+                <span class="score-value" id="score-x">0</span>
+            </div>
+            <div class="score-card score-draw">
+                <span class="score-player-badge draw-badge">−</span>
+                <span class="score-label">Draws</span>
+                <span class="score-value" id="score-draw">0</span>
+            </div>
+            <div class="score-card score-o">
+                <span class="score-player-badge badge-o">O</span>
+                <span class="score-label" id="label-o">Player O</span>
+                <span class="score-value" id="score-o">0</span>
+            </div>
+        </div>
+
+        <!-- Game Status Banner -->
+        <div id="status" class="game-status" aria-live="polite">Player X's turn</div>
+
+        <!-- Grid Board -->
+        <div class="board" id="game-board" role="grid" aria-label="Tic-Tac-Toe Board">
+            <button class="cell" id="cell-0" role="gridcell" aria-label="Row 1, Column 1"></button>
+            <button class="cell" id="cell-1" role="gridcell" aria-label="Row 1, Column 2"></button>
+            <button class="cell" id="cell-2" role="gridcell" aria-label="Row 1, Column 3"></button>
+            <button class="cell" id="cell-3" role="gridcell" aria-label="Row 2, Column 1"></button>
+            <button class="cell" id="cell-4" role="gridcell" aria-label="Row 2, Column 2"></button>
+            <button class="cell" id="cell-5" role="gridcell" aria-label="Row 2, Column 3"></button>
+            <button class="cell" id="cell-6" role="gridcell" aria-label="Row 3, Column 1"></button>
+            <button class="cell" id="cell-7" role="gridcell" aria-label="Row 3, Column 2"></button>
+            <button class="cell" id="cell-8" role="gridcell" aria-label="Row 3, Column 3"></button>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls-row">
+            <button id="reset" class="btn btn-primary" aria-label="Restart Current Round">Restart Round</button>
+            <button id="reset-scores" class="btn btn-secondary" aria-label="Reset Match Scores">Reset Scores</button>
+        </div>
     </main>
+
     <script src="script.js"></script>
 </body>
 </html>
